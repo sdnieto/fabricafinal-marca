@@ -39,7 +39,9 @@ export function PostStoryShell({
   quoteAuthor,
 }: PostStoryShellProps) {
   const { width, height } = PIEZA_DIMS[format];
-  const showHeaderLogo = variant !== "imagen";
+  // Solo la variante "cita" (quote card) conserva el logo arriba; post/historia
+  // ("novedad"/"imagen") lo muestran únicamente abajo.
+  const showHeaderLogo = variant === "cita";
   const logoSrc = logoStyle === "completo" ? "/logo/altara-logo.png" : "/logo/fleur-ornament.png";
 
   return (
@@ -69,16 +71,16 @@ export function PostStoryShell({
             display: "flex",
             flexDirection: "column",
             padding: "0 9%",
-            marginTop: format === "story" ? "16%" : "9%",
+            marginTop: format === "story" ? "10%" : "6%",
           }}
         >
-          <div style={{ fontSize: 16, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-300)" }}>
+          <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-300)" }}>
             {eyebrow}
           </div>
-          <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 50, lineHeight: 1.15, color: "var(--charcoal)", marginTop: 18 }}>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 58, lineHeight: 1.15, color: "var(--charcoal)", marginTop: 18 }}>
             {title}
           </div>
-          <div style={{ fontSize: 19, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 20, maxWidth: "88%" }}>
+          <div style={{ fontSize: 21, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 20, maxWidth: "88%" }}>
             {subtitle}
           </div>
         </div>
@@ -94,11 +96,11 @@ export function PostStoryShell({
             )}
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "8% 9% 0" }}>
-            <div style={{ fontSize: 15, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
-            <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 44, lineHeight: 1.14, color: "var(--charcoal)", marginTop: 14 }}>
+            <div style={{ fontSize: 16, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
+            <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 51, lineHeight: 1.14, color: "var(--charcoal)", marginTop: 14 }}>
               {title}
             </div>
-            <div style={{ fontSize: 18, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 16, maxWidth: "90%" }}>
+            <div style={{ fontSize: 20, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 16, maxWidth: "90%" }}>
               {subtitle}
             </div>
           </div>
@@ -118,14 +120,14 @@ export function PostStoryShell({
           }}
         >
           {eyebrow && (
-            <div style={{ fontSize: 15, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
+            <div style={{ fontSize: 16, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
           )}
           <div
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
               fontWeight: 500,
-              fontSize: 38,
+              fontSize: 44,
               lineHeight: 1.4,
               color: "var(--charcoal)",
               marginTop: 22,
@@ -134,7 +136,7 @@ export function PostStoryShell({
             &ldquo;{quoteText}&rdquo;
           </div>
           {quoteAuthor && (
-            <div style={{ fontSize: 16, letterSpacing: "0.04em", color: "var(--text-on-light-muted)", marginTop: 24 }}>
+            <div style={{ fontSize: 17, letterSpacing: "0.04em", color: "var(--text-on-light-muted)", marginTop: 24 }}>
               — {quoteAuthor}
             </div>
           )}
