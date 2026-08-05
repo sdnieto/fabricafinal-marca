@@ -1,7 +1,7 @@
 import type { MutableRefObject, RefObject } from "react";
-import { exportNodeToPng } from "../../lib/exportPng";
+import { exportNodeToPng, captureNodeToPngBlob } from "../../lib/exportPng";
 import { exportNodeToPdf } from "../../lib/exportPdf";
-import { downloadBlob } from "../../lib/download";
+import { saveFile, saveFiles } from "../../lib/download";
 import { buildFilename } from "../../lib/filename";
 import { Button } from "../ds/Button";
 import type { AnyAssetConfig } from "../../assets-registry/types";
@@ -29,18 +29,21 @@ export function DownloadButton({
     } else if (config.kind === "capture-pdf" && captureRef.current) {
       await exportNodeToPdf(captureRef.current, buildFilename(config.categoryId, config.id, shortTitle, "pdf"));
     } else if (config.kind === "carousel") {
+      const files = [];
       for (let i = 0; i < content.slides.length; i++) {
         const node = slideRefs.current[i];
         if (!node) continue;
         const slideTitle = content.slides[i].title || `${shortTitle}-${i + 1}`;
-        // ponytail: pequeña pausa entre descargas — los navegadores bloquean descargas
-        // automáticas simultáneas; si un carrusel muy largo la sigue pasando, pasar a zip.
-        await exportNodeToPng(node, buildFilename(config.categoryId, config.id, `${slideTitle}-slide-${i + 1}`, "png"));
-        await new Promise((r) => setTimeout(r, 350));
+        const blob = await captureNodeToPngBlob(node);
+        files.push({ blob, filename: buildFilename(config.categoryId, config.id, `${slideTitle}-slide-${i + 1}`, "png") });
       }
+      // Un solo share sheet con los N archivos si el navegador lo soporta (Web
+      // Share Level 2); si no, cae a descargas secuenciales por link.
+      await saveFiles(files);
     } else if (config.kind === "html") {
       const html = await config.buildHtml(content);
-      downloadBlob(html, buildFilename(config.categoryId, config.id, shortTitle, "html"), "text/html");
+      const blob = new Blob([html], { type: "text/html" });
+      await saveFile(blob, buildFilename(config.categoryId, config.id, shortTitle, "html"));
     }
   }
 

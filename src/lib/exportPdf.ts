@@ -1,5 +1,6 @@
 import { toCanvas } from "html-to-image";
 import { jsPDF } from "jspdf";
+import { saveFile } from "./download";
 
 /** px por pulgada usado para dimensionar la página PDF a partir del tamaño CSS
  * del nodo (1920x1080 a 144dpi = 13.33x7.5in, el ancho estándar de slide widescreen;
@@ -17,5 +18,8 @@ export async function exportNodeToPdf(node: HTMLElement, filename: string) {
     format: [widthIn, heightIn],
   });
   pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, 0, widthIn, heightIn);
-  pdf.save(filename);
+  // pdf.output("blob") + saveFile en vez de pdf.save(): mismo mecanismo de guardado
+  // (Web Share con fallback a blob: URL) que PNG y HTML, más confiable en móvil.
+  const blob = pdf.output("blob");
+  await saveFile(blob, filename);
 }
