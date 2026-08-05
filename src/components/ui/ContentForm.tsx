@@ -52,6 +52,37 @@ export function ContentForm<T extends Record<string, unknown>>({
             </label>
           );
         }
+        if (f.kind === "select") {
+          return (
+            <div key={key} style={fieldWrap}>
+              <span style={labelStyle}>{f.label}</span>
+              <div style={{ display: "flex", gap: 8 }}>
+                {f.options?.map((opt) => {
+                  const selected = value === opt.value;
+                  return (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      onClick={() => onChange({ ...content, [f.key]: opt.value })}
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: "var(--text-body-sm)",
+                        padding: "9px 16px",
+                        borderRadius: "var(--radius-pill)",
+                        border: `1px solid ${selected ? "var(--gold-500)" : "var(--border-on-light)"}`,
+                        background: selected ? "var(--gold-500)" : "transparent",
+                        color: selected ? "#fff" : "var(--text-on-light-primary)",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        }
         return (
           <Input key={key} label={f.label} value={value} onChange={(e) => onChange({ ...content, [f.key]: e.target.value })} />
         );

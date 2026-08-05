@@ -74,13 +74,13 @@ export function PostStoryShell({
             marginTop: format === "story" ? "10%" : "6%",
           }}
         >
-          <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-300)" }}>
+          <div style={{ fontSize: 20, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-300)" }}>
             {eyebrow}
           </div>
-          <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 58, lineHeight: 1.15, color: "var(--charcoal)", marginTop: 18 }}>
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 80, lineHeight: 1.12, color: "var(--charcoal)", marginTop: 20 }}>
             {title}
           </div>
-          <div style={{ fontSize: 21, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 20, maxWidth: "88%" }}>
+          <div style={{ fontSize: 26, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 24, maxWidth: "88%" }}>
             {subtitle}
           </div>
         </div>
@@ -96,11 +96,11 @@ export function PostStoryShell({
             )}
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "8% 9% 0" }}>
-            <div style={{ fontSize: 16, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
-            <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 51, lineHeight: 1.14, color: "var(--charcoal)", marginTop: 14 }}>
+            <div style={{ fontSize: 19, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
+            <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 70, lineHeight: 1.12, color: "var(--charcoal)", marginTop: 16 }}>
               {title}
             </div>
-            <div style={{ fontSize: 20, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 16, maxWidth: "90%" }}>
+            <div style={{ fontSize: 25, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 18, maxWidth: "90%" }}>
               {subtitle}
             </div>
           </div>
@@ -120,23 +120,23 @@ export function PostStoryShell({
           }}
         >
           {eyebrow && (
-            <div style={{ fontSize: 16, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
+            <div style={{ fontSize: 19, fontWeight: 600, letterSpacing: "0.18em", color: "var(--gold-500)" }}>{eyebrow}</div>
           )}
           <div
             style={{
               fontFamily: "var(--font-display)",
               fontStyle: "italic",
               fontWeight: 500,
-              fontSize: 44,
-              lineHeight: 1.4,
+              fontSize: 61,
+              lineHeight: 1.35,
               color: "var(--charcoal)",
-              marginTop: 22,
+              marginTop: 26,
             }}
           >
             &ldquo;{quoteText}&rdquo;
           </div>
           {quoteAuthor && (
-            <div style={{ fontSize: 17, letterSpacing: "0.04em", color: "var(--text-on-light-muted)", marginTop: 24 }}>
+            <div style={{ fontSize: 21, letterSpacing: "0.04em", color: "var(--text-on-light-muted)", marginTop: 26 }}>
               — {quoteAuthor}
             </div>
           )}

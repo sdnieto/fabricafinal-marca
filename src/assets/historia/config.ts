@@ -17,6 +17,15 @@ export const historiaConfig: CaptureAssetConfig<PiezaGraficaContent> = {
     { key: "title", label: "Titular", kind: "textarea" },
     { key: "subtitle", label: "Subtítulo", kind: "textarea" },
     { key: "imageDataUrl", label: "Imagen (opcional)", kind: "image" },
+    {
+      key: "logoStyle",
+      label: "Logo",
+      kind: "select",
+      options: [
+        { value: "completo", label: "Marca completa" },
+        { value: "fleur", label: "Flor de lis" },
+      ],
+    },
   ],
   defaultContent: () => ({
     eyebrow: "NOVEDADES",
