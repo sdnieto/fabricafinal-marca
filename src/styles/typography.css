@@ -1,0 +1,21 @@
+:root{
+--font-display:"Diotima Classic",Georgia,"Times New Roman",serif;
+--font-body:"Elms Sans",-apple-system,"Segoe UI",sans-serif;
+
+--tracking-wordmark:0.06em;
+--tracking-eyebrow:0.22em;
+--tracking-body:0;
+
+--text-display-xl:clamp(3rem,6vw,5.5rem);
+--text-display-lg:clamp(2.25rem,4vw,3.5rem);
+--text-display-md:2rem;
+--text-display-sm:1.5rem;
+--text-eyebrow:0.8rem;
+--text-body-lg:1.15rem;
+--text-body:1rem;
+--text-body-sm:0.875rem;
+--text-caption:0.75rem;
+
+--leading-display:1.08;
+--leading-body:1.6;
+}
