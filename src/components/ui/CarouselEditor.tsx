@@ -61,6 +61,20 @@ export function CarouselEditor({ content, onChange }: { content: CarouselContent
             <textarea rows={2} style={textAreaStyle} value={slide.subtitle} onChange={(e) => updateSlide(i, { subtitle: e.target.value })} />
           </label>
           <ImageField label="Imagen (opcional)" value={slide.imageDataUrl} onChange={(v) => updateSlide(i, { imageDataUrl: v })} />
+          <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ fontSize: "var(--text-body-sm)", color: "var(--text-on-light-muted)" }}>
+              Tamaño de texto: {slide.titleSize ?? 120}px
+            </span>
+            <input
+              type="range"
+              min={50}
+              max={200}
+              step={2}
+              value={slide.titleSize ?? 120}
+              onChange={(e) => updateSlide(i, { titleSize: Number(e.target.value) })}
+              style={{ width: "100%", accentColor: "var(--gold-500)" }}
+            />
+          </label>
         </div>
       ))}
       <Button variant="secondary" size="sm" onClick={addSlide}>
