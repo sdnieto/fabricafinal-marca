@@ -1,4 +1,4 @@
-import { autoEyebrow, autoSubtitle, autoTitle } from "../../content/copyBank";
+import { autoThemedContent } from "../../content/copyBank";
 import type { PiezaGraficaContent } from "../../types/content";
 import type { CaptureAssetConfig } from "../../assets-registry/types";
 import { PIEZA_DIMS } from "../../components/shared/PostStoryShell";
@@ -34,9 +34,7 @@ export const postCuadradoConfig: CaptureAssetConfig<PiezaGraficaContent> = {
     logoStyle: "completo",
   }),
   autoContent: () => ({
-    eyebrow: autoEyebrow(),
-    title: autoTitle(),
-    subtitle: autoSubtitle(),
+    ...autoThemedContent(),
     logoStyle: "completo",
   }),
 };
