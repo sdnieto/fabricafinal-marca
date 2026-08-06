@@ -9,6 +9,7 @@ export function QuoteCardTemplate({ content }: { content: QuoteCardContent }) {
       logoStyle={content.logoStyle}
       quoteText={content.quoteText}
       quoteAuthor={content.author}
+      titleSize={content.titleSize}
     />
   );
 }

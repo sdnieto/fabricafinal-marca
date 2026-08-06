@@ -11,6 +11,7 @@ export function HistoriaTemplate({ content }: { content: PiezaGraficaContent }) 
       title={content.title}
       subtitle={content.subtitle}
       imageDataUrl={content.imageDataUrl}
+      titleSize={content.titleSize}
     />
   );
 }

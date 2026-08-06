@@ -4,7 +4,13 @@ import type { OnePagerContent } from "../../types/content";
 
 // Nuevo — sin template previo en Claude Design. Diseñado con los mismos tokens/
 // componentes del design system (ivory + dorado, modo día — "piezas funcionales").
+const EYEBROW_RATIO = 0.28;
+const INTRO_RATIO = 0.41;
+
 export function OnePagerTemplate({ content }: { content: OnePagerContent }) {
+  const titleSize = content.titleSize ?? 46;
+  const eyebrowSize = Math.round(titleSize * EYEBROW_RATIO);
+  const introSize = Math.round(titleSize * INTRO_RATIO);
   return (
     <div
       style={{
@@ -24,13 +30,13 @@ export function OnePagerTemplate({ content }: { content: OnePagerContent }) {
       </div>
 
       <div style={{ marginTop: 56 }}>
-        <div style={{ fontSize: "var(--text-eyebrow)", letterSpacing: "var(--tracking-eyebrow)", color: "var(--gold-300)", fontWeight: 700 }}>
+        <div style={{ fontSize: eyebrowSize, letterSpacing: "var(--tracking-eyebrow)", color: "var(--gold-300)", fontWeight: 700 }}>
           {content.eyebrow}
         </div>
-        <div style={{ fontFamily: "var(--font-display)", fontSize: 46, color: "var(--charcoal)", marginTop: 14, lineHeight: 1.15 }}>
+        <div style={{ fontFamily: "var(--font-display)", fontSize: titleSize, color: "var(--charcoal)", marginTop: 14, lineHeight: 1.15 }}>
           {content.title}
         </div>
-        <div style={{ fontSize: 19, lineHeight: 1.6, color: "var(--text-on-light-muted)", marginTop: 20, maxWidth: "82%" }}>
+        <div style={{ fontSize: introSize, lineHeight: 1.6, color: "var(--text-on-light-muted)", marginTop: 20, maxWidth: "82%" }}>
           {content.intro}
         </div>
       </div>

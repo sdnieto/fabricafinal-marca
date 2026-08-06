@@ -26,15 +26,18 @@ export const historiaConfig: CaptureAssetConfig<PiezaGraficaContent> = {
         { value: "fleur", label: "Flor de lis" },
       ],
     },
+    { key: "titleSize", label: "Tamaño de texto", kind: "slider", min: 50, max: 200, step: 2 },
   ],
   defaultContent: () => ({
     eyebrow: "NOVEDADES",
     title: "Cupos de agosto abiertos",
     subtitle: "Reserva con 5 días de anticipación y asegura tu lugar.",
     logoStyle: "completo",
+    titleSize: 80,
   }),
   autoContent: () => ({
     ...autoThemedContent(),
     logoStyle: "completo",
+    titleSize: 80,
   }),
 };

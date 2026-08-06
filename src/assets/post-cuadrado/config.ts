@@ -26,15 +26,18 @@ export const postCuadradoConfig: CaptureAssetConfig<PiezaGraficaContent> = {
         { value: "fleur", label: "Flor de lis" },
       ],
     },
+    { key: "titleSize", label: "Tamaño de texto", kind: "slider", min: 50, max: 200, step: 2 },
   ],
   defaultContent: () => ({
     eyebrow: "NOVEDADES",
     title: "Cada semana rechazamos pedidos por falta de cupo",
     subtitle: "Reserva tu pastel con al menos 5 días de anticipación y asegura tu lugar.",
     logoStyle: "completo",
+    titleSize: 80,
   }),
   autoContent: () => ({
     ...autoThemedContent(),
     logoStyle: "completo",
+    titleSize: 80,
   }),
 };

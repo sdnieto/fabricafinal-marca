@@ -4,7 +4,13 @@ import type { PortadaContent } from "../../types/content";
 // Nuevo — sin template previo en Claude Design. Modo velvet (noche): el readme del
 // design system lo marca como "el modo principal... usado en piezas de producto
 // premium", el registro que le corresponde a una portada de presentación.
+const EYEBROW_RATIO = 0.18;
+const SUBTITLE_RATIO = 0.26;
+
 export function PortadaTemplate({ content }: { content: PortadaContent }) {
+  const titleSize = content.titleSize ?? 72;
+  const eyebrowSize = Math.round(titleSize * EYEBROW_RATIO);
+  const subtitleSize = Math.round(titleSize * SUBTITLE_RATIO);
   return (
     <div
       style={{
@@ -25,7 +31,7 @@ export function PortadaTemplate({ content }: { content: PortadaContent }) {
     >
       <img src="/logo/altara-logo.png" alt="Altara Pastelería" style={{ height: 84, filter: "brightness(1.15)" }} />
 
-      <div style={{ fontSize: "var(--text-eyebrow)", letterSpacing: "var(--tracking-eyebrow)", color: "var(--gold-500)", fontWeight: 700 }}>
+      <div style={{ fontSize: eyebrowSize, letterSpacing: "var(--tracking-eyebrow)", color: "var(--gold-500)", fontWeight: 700 }}>
         {content.eyebrow}
       </div>
 
@@ -33,7 +39,7 @@ export function PortadaTemplate({ content }: { content: PortadaContent }) {
         style={{
           fontFamily: "var(--font-display)",
           color: "var(--neutral-50)",
-          fontSize: 72,
+          fontSize: titleSize,
           lineHeight: "var(--leading-display)",
           maxWidth: 1200,
         }}
@@ -45,7 +51,7 @@ export function PortadaTemplate({ content }: { content: PortadaContent }) {
         <Divider tone="dark" />
       </div>
 
-      <div style={{ color: "var(--text-on-dark-muted)", fontSize: "var(--text-body-lg)", maxWidth: 780, lineHeight: "var(--leading-body)" }}>
+      <div style={{ color: "var(--text-on-dark-muted)", fontSize: subtitleSize, maxWidth: 780, lineHeight: "var(--leading-body)" }}>
         {content.subtitle}
       </div>
     </div>
