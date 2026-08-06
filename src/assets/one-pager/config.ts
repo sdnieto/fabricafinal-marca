@@ -16,7 +16,6 @@ export const onePagerConfig: CaptureAssetConfig<OnePagerContent> = {
     { key: "title", label: "Título del servicio", kind: "text" },
     { key: "intro", label: "Introducción", kind: "textarea" },
     { key: "priceAnchor", label: "Precio anclado (opcional)", kind: "text" },
-    { key: "titleSize", label: "Tamaño de texto", kind: "slider", min: 30, max: 90, step: 2 },
   ],
   defaultContent: () => ({
     eyebrow: "SERVICIO",
@@ -28,7 +27,7 @@ export const onePagerConfig: CaptureAssetConfig<OnePagerContent> = {
       { heading: "Porciones", body: "Con 20 porciones alcanza cómodo para 15 personas si hay más postres en la mesa." },
     ],
     priceAnchor: "Desde $260.000 · 30 porciones",
-    titleSize: 46,
+    titleSize: 65,
   }),
   autoContent: () => ({
     eyebrow: "SERVICIO",
@@ -40,6 +39,6 @@ export const onePagerConfig: CaptureAssetConfig<OnePagerContent> = {
       { heading: "Porciones", body: "Con 20 porciones alcanza cómodo para 15 personas si hay más postres en la mesa." },
     ],
     priceAnchor: "Desde $260.000 · 30 porciones",
-    titleSize: 46,
+    titleSize: 65,
   }),
 };

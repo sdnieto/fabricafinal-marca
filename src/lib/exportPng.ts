@@ -1,12 +1,13 @@
 import { toBlob } from "html-to-image";
 import { saveFile } from "./download";
 
-/** Captura un nodo a su tamaño real en px (pixelRatio 1 — el nodo ya está dimensionado
- * al tamaño final de exportación; el preview en pantalla lo escala visualmente con CSS
- * transform, que no afecta el offsetWidth/Height que usa html-to-image). */
+/** pixelRatio 2: el nodo ya está al tamaño final (1080×1350, etc.), pero capturar a 1x
+ * produce bordes de texto suaves/pixelados — Instagram y el resto de plataformas aceptan
+ * imágenes más grandes que el mínimo recomendado sin problema, así que se sobre-muestrea
+ * a 2x (2160×2700, etc.) para que el texto se vea nítido, casi vectorial, al hacer zoom. */
 export async function captureNodeToPngBlob(node: HTMLElement): Promise<Blob> {
   await document.fonts.ready;
-  const blob = await toBlob(node, { pixelRatio: 1, cacheBust: true });
+  const blob = await toBlob(node, { pixelRatio: 2, cacheBust: true });
   if (!blob) throw new Error("No se pudo generar el PNG");
   return blob;
 }

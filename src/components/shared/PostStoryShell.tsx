@@ -24,10 +24,25 @@ interface PostStoryShellProps {
   titleSize?: number;
 }
 
-const DEFAULT_TITLE_SIZE: Record<PiezaVariant, number> = { novedad: 80, imagen: 70, cita: 61 };
-// Proporciones actuales (80/26/20 en novedad, 61/21/19 en cita) fijadas como ratio.
+const DEFAULT_TITLE_SIZE: Record<PiezaVariant, number> = { novedad: 120, imagen: 120, cita: 120 };
+// Proporciones fijadas como ratio (eyebrow y subtítulo/atribución escalan con el titular).
 const EYEBROW_RATIO: Record<PiezaVariant, number> = { novedad: 0.25, imagen: 0.25, cita: 0.31 };
 const SUBTITLE_RATIO: Record<PiezaVariant, number> = { novedad: 0.325, imagen: 0.325, cita: 0.34 };
+// Extra fijo pedido para la línea de subtítulo/atribución, encima de lo que da la proporción.
+const SUBTITLE_EXTRA_PX = 8;
+// Franja "marcador" translúcida detrás del subtítulo — var(--gold-300) al 22%.
+// box-decoration-break: clone hace que cada línea envuelta tenga su propia franja
+// ajustada al texto (en vez de un solo rectángulo del ancho del contenedor).
+const SUBTITLE_HIGHLIGHT = "rgba(228,146,89,0.22)";
+const subtitleHighlightStyle = (fontSize: number): CSSProperties => ({
+  fontSize,
+  color: "var(--text-on-light-muted)",
+  background: SUBTITLE_HIGHLIGHT,
+  padding: "3px 8px",
+  borderRadius: 4,
+  boxDecorationBreak: "clone",
+  WebkitBoxDecorationBreak: "clone",
+});
 
 const blobBase: CSSProperties = { position: "absolute", borderRadius: "50%", background: "var(--bg-ivory-bloom)" };
 
@@ -55,7 +70,7 @@ export function PostStoryShell({
 
   const baseSize = titleSize ?? DEFAULT_TITLE_SIZE[variant];
   const eyebrowSize = Math.round(baseSize * EYEBROW_RATIO[variant]);
-  const subtitleSize = Math.round(baseSize * SUBTITLE_RATIO[variant]);
+  const subtitleSize = Math.round(baseSize * SUBTITLE_RATIO[variant]) + SUBTITLE_EXTRA_PX;
 
   return (
     <div
@@ -93,8 +108,8 @@ export function PostStoryShell({
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: baseSize, lineHeight: 1.12, color: "var(--charcoal)", marginTop: 20 }}>
             {title}
           </div>
-          <div style={{ fontSize: subtitleSize, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 24, maxWidth: "88%" }}>
-            {subtitle}
+          <div style={{ marginTop: 24, maxWidth: "88%", lineHeight: 1.7 }}>
+            <span style={subtitleHighlightStyle(subtitleSize)}>{subtitle}</span>
           </div>
         </div>
       )}
@@ -113,8 +128,8 @@ export function PostStoryShell({
             <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: baseSize, lineHeight: 1.12, color: "var(--charcoal)", marginTop: 16 }}>
               {title}
             </div>
-            <div style={{ fontSize: subtitleSize, lineHeight: 1.5, color: "var(--text-on-light-muted)", marginTop: 18, maxWidth: "90%" }}>
-              {subtitle}
+            <div style={{ marginTop: 18, maxWidth: "90%", lineHeight: 1.7 }}>
+              <span style={subtitleHighlightStyle(subtitleSize)}>{subtitle}</span>
             </div>
           </div>
         </div>

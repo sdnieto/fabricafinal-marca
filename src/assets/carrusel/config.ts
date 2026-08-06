@@ -7,7 +7,7 @@ import { PostCuadradoTemplate } from "../post-cuadrado/Template";
 const SLIDE_COUNT = 3;
 
 function blankSlide() {
-  return { eyebrow: "NOVEDADES", title: "", subtitle: "", logoStyle: "completo" as const, titleSize: 80 };
+  return { eyebrow: "NOVEDADES", title: "", subtitle: "", logoStyle: "completo" as const, titleSize: 120 };
 }
 
 export const carruselConfig: CarouselAssetConfig<CarouselContent> = {

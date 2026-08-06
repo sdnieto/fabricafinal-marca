@@ -52,23 +52,6 @@ export function ContentForm<T extends Record<string, unknown>>({
             </label>
           );
         }
-        if (f.kind === "slider") {
-          const num = (content[f.key] as number | undefined) ?? f.min ?? 0;
-          return (
-            <div key={key} style={fieldWrap}>
-              <span style={labelStyle}>{f.label}: {num}px</span>
-              <input
-                type="range"
-                min={f.min}
-                max={f.max}
-                step={f.step ?? 1}
-                value={num}
-                onChange={(e) => onChange({ ...content, [f.key]: Number(e.target.value) })}
-                style={{ width: "100%", accentColor: "var(--gold-500)" }}
-              />
-            </div>
-          );
-        }
         if (f.kind === "select") {
           return (
             <div key={key} style={fieldWrap}>

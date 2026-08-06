@@ -15,15 +15,14 @@ export const quoteCardConfig: CaptureAssetConfig<QuoteCardContent> = {
   fields: [
     { key: "quoteText", label: "Cita", kind: "textarea" },
     { key: "author", label: "Atribución (opcional)", kind: "text" },
-    { key: "titleSize", label: "Tamaño de texto", kind: "slider", min: 35, max: 150, step: 2 },
   ],
   defaultContent: () => ({
     quoteText: "El lujo se demuestra con detalle, no con superlativos.",
     logoStyle: "completo",
-    titleSize: 61,
+    titleSize: 120,
   }),
   autoContent: () => {
     const q = autoQuote();
-    return { quoteText: q.quoteText, author: q.author, logoStyle: "completo", titleSize: 61 };
+    return { quoteText: q.quoteText, author: q.author, logoStyle: "completo", titleSize: 120 };
   },
 };
