@@ -26,6 +26,7 @@ export const postCuadradoConfig: CaptureAssetConfig<PiezaGraficaContent> = {
         { value: "fleur", label: "Flor de lis" },
       ],
     },
+    { key: "titleSize", label: "Tamaño de texto", kind: "slider", min: 50, max: 200, step: 2 },
   ],
   defaultContent: () => ({
     eyebrow: "NOVEDADES",

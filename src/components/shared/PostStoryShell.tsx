@@ -108,9 +108,11 @@ export function PostStoryShell({
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: baseSize, lineHeight: 1.12, color: "var(--charcoal)", marginTop: 20 }}>
             {title}
           </div>
-          <div style={{ marginTop: 24, maxWidth: "88%", lineHeight: 1.7 }}>
-            <span style={subtitleHighlightStyle(subtitleSize)}>{subtitle}</span>
-          </div>
+          {subtitle && (
+            <div style={{ marginTop: 24, maxWidth: "88%", lineHeight: 1.7 }}>
+              <span style={subtitleHighlightStyle(subtitleSize)}>{subtitle}</span>
+            </div>
+          )}
         </div>
       )}
 
@@ -128,9 +130,11 @@ export function PostStoryShell({
             <div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: baseSize, lineHeight: 1.12, color: "var(--charcoal)", marginTop: 16 }}>
               {title}
             </div>
-            <div style={{ marginTop: 18, maxWidth: "90%", lineHeight: 1.7 }}>
-              <span style={subtitleHighlightStyle(subtitleSize)}>{subtitle}</span>
-            </div>
+            {subtitle && (
+              <div style={{ marginTop: 18, maxWidth: "90%", lineHeight: 1.7 }}>
+                <span style={subtitleHighlightStyle(subtitleSize)}>{subtitle}</span>
+              </div>
+            )}
           </div>
         </div>
       )}

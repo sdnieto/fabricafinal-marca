@@ -78,6 +78,9 @@ export type CategoryId = "redes-sociales" | "comercial" | "presentaciones";
 export interface FieldSpec<T> {
   key: keyof T;
   label: string;
-  kind: "text" | "textarea" | "image" | "select";
+  kind: "text" | "textarea" | "image" | "select" | "slider";
   options?: { value: string; label: string }[];
+  min?: number;
+  max?: number;
+  step?: number;
 }
